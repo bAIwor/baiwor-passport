@@ -1,0 +1,23 @@
+{
+  "name": "Baiwor Passport #0",
+  "description": "Baiwor Passport NFT. Free-minted by an Agent ID holder (rupiah.ai) through baiwor.my.id. One passport per Agent ID address, soulbound.",
+  "image": "ipfs://bafybeidmrga2rupdee274hoiwdvrhqrpcchvjrahynpgnbj3kjgj2sg5pe",
+  "attributes": [
+    {
+      "trait_type": "Agent ID",
+      "value": "rupiah.ai"
+    },
+    {
+      "trait_type": "Holder",
+      "value": "0x176524995515Cc187950CfFDad0Ee2F869872e02"
+    },
+    {
+      "trait_type": "Collection",
+      "value": "Baiwor Passport"
+    },
+    {
+      "trait_type": "Event",
+      "value": "Agent ID Hackathon"
+    }
+  ]
+}

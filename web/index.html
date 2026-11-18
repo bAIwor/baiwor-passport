@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Baiwor Passport (BWP) | Agent ID Soulbound Credential</title>
+  <meta name="description" content="Free soulbound ERC-721 passport on BNB Smart Chain exclusively for .ai Agent ID holders.">
+  <link rel="preload" as="image" href="https://gateway.pinata.cloud/ipfs/bafybeidmrga2rupdee274hoiwdvrhqrpcchvjrahynpgnbj3kjgj2sg5pe" fetchpriority="high">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a href="#main-title" class="skip-link visually-hidden">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://baiwor.my.id" class="brand" aria-label="bAIwor Home">
+        <span class="brand-mark" aria-hidden="true">BWP</span>
+        <span class="brand-name">Baiwor Passport</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#eligibility">Check ID</a></li>
+          <li><a href="#agent-cli">Agent CLI</a></li>
+          <li><a href="#holders">Holders</a></li>
+          <li><a href="https://bscscan.com/address/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F" target="_blank" rel="noopener noreferrer">BscScan</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">BNB Smart Chain · Chain ID 56 · Soulbound ERC-721</p>
+        <h1 id="main-title" tabindex="-1">On-Chain Passport for <code>.ai</code> Agent IDs</h1>
+        <p class="lead">
+          Baiwor Passport (<code>BWP</code>) verifies ownership of a SPACE ID <code>.ai</code> Agent ID on-chain
+          and issues one free, non-transferable soulbound credential per agent wallet.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#agent-cli" class="btn btn-primary">Mint via AI Agent</a>
+          <a href="./agent-skill.md" class="btn btn-secondary">Read agent-skill.md</a>
+        </div>
+
+        <p id="wallet-status" class="status-line" role="status" aria-live="polite">
+          Minting is agent-only: your Binance Agentic Wallet agent calls the contract — no web wallet connection, no QR pairing.
+        </p>
+
+        <dl class="contract-strip">
+          <div class="copyable-row">
+            <dt>BWP Contract</dt>
+            <dd>
+              <code id="contract-addr">0x0C458D61848Ef7fFD753FbDD1179a7053A60661F</code>
+              <span class="copy">
+                <button type="button" class="copy-button" command="--copy" commandfor="contract-addr" aria-label="Copy BWP contract address">
+                  <svg class="icon-copy" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+                  <svg class="icon-check" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </button>
+                <span class="tip" role="status"></span>
+              </span>
+            </dd>
+          </div>
+          <div class="copyable-row">
+            <dt>Agent ID Registry</dt>
+            <dd>
+              <code id="registry-addr">0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</code>
+              <span class="copy">
+                <button type="button" class="copy-button" command="--copy" commandfor="registry-addr" aria-label="Copy Agent ID registry address">
+                  <svg class="icon-copy" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+                  <svg class="icon-check" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </button>
+                <span class="tip" role="status"></span>
+              </span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="passport-card">
+        <img
+          src="https://gateway.pinata.cloud/ipfs/bafybeidmrga2rupdee274hoiwdvrhqrpcchvjrahynpgnbj3kjgj2sg5pe"
+          alt="Baiwor Passport soulbound NFT artwork"
+          width="480"
+          height="480"
+          fetchpriority="high"
+        >
+        <figcaption>
+          <span class="badge">Soulbound</span>
+          <span>1 Free Mint per <code>.ai</code> Agent ID</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="stats-grid" aria-label="Live Contract Metrics">
+      <article class="stat-card">
+        <h2>Total Minted</h2>
+        <p class="stat-value" id="stat-minted">Loading...</p>
+        <p class="stat-meta">Live <code>nextTokenId()</code> on BSC</p>
+      </article>
+      <article class="stat-card">
+        <h2>Mint Price</h2>
+        <p class="stat-value">0 BNB</p>
+        <p class="stat-meta">Gas only · 1 per Agent ID</p>
+      </article>
+      <article class="stat-card">
+        <h2>Transferability</h2>
+        <p class="stat-value">Soulbound</p>
+        <p class="stat-meta">Bound permanently to minter</p>
+      </article>
+      <article class="stat-card">
+        <h2>Source Verification</h2>
+        <p class="stat-value">Verified</p>
+        <p class="stat-meta"><a href="https://sourcify.dev/server/v2/contract/56/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F?fields=sources" target="_blank" rel="noopener noreferrer">Sourcify Exact Match</a></p>
+      </article>
+    </section>
+
+    <section id="eligibility" class="panel">
+      <h2>Check Agent ID Eligibility</h2>
+      <p>Inspect any BNB Smart Chain address to verify whether it holds a <code>.ai</code> Agent ID and has minted its Baiwor Passport.</p>
+      <search>
+        <form id="check-form" class="check-form">
+          <div class="field-group">
+            <label for="address-input">BSC Wallet Address</label>
+            <span id="address-hint" class="field-hint">Enter a 42-character <code>0x...</code> address on BNB Smart Chain.</span>
+            <input
+              id="address-input"
+              name="address"
+              type="text"
+              inputmode="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="0x176524995515Cc187950CfFDad0Ee2F869872e02"
+              aria-describedby="address-hint"
+              required
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">Check Status</button>
+        </form>
+      </search>
+      <div id="eligibility-result" class="result-box" role="status" aria-live="polite"></div>
+    </section>
+
+    <section id="agent-cli" class="panel">
+      <h2>Mint via AI Agent (<code>baw</code> CLI)</h2>
+      <p>Use Binance Agentic Wallet two-step simulation (<code>preview</code> then <code>execute</code>) with zero blind signing.</p>
+      <div class="copyable">
+        <span class="copy">
+          <button type="button" class="copy-button" command="--copy" commandfor="baw-cmd" aria-label="Copy Binance Agentic Wallet mint command">
+            <svg class="icon-copy" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+            <svg class="icon-check" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </button>
+          <span class="tip" role="status"></span>
+        </span>
+        <pre role="region" aria-label="Binance Agentic Wallet mint command" tabindex="0"><code id="baw-cmd">baw contract-call preview --binanceChainId 56 --from &lt;YOUR_BSC_ADDRESS&gt; --to 0x0C458D61848Ef7fFD753FbDD1179a7053A60661F --value 0 --inputData 0x1249c58b --json</code></pre>
+      </div>
+    </section>
+
+    <section id="holders" class="panel">
+      <div class="panel-head">
+        <h2>Recent Passport Holders</h2>
+        <button type="button" id="refresh-holders-btn" class="btn btn-secondary">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Latest minted Baiwor Passport (BWP) tokens on BNB Smart Chain</caption>
+          <thead>
+            <tr>
+              <th scope="col">Token ID</th>
+              <th scope="col">Agent Holder</th>
+              <th scope="col">Minted At (UTC)</th>
+              <th scope="col">Explorer</th>
+            </tr>
+          </thead>
+          <tbody id="holders-tbody">
+            <tr>
+              <td colspan="4">Loading on-chain holders from BSC RPC...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Built by <a href="https://baiwor.my.id">bAIwor</a> · <a href="https://github.com/bAIwor/baiwor-passport" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="./llms.txt">llms.txt</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "Baiwor Passport #15",
+  "description": "Baiwor Passport NFT. Free-minted by an Agent ID holder through baiwor.my.id. One passport per Agent ID address, soulbound.",
+  "image": "ipfs://bafybeidmrga2rupdee274hoiwdvrhqrpcchvjrahynpgnbj3kjgj2sg5pe",
+  "attributes": [
+    {
+      "trait_type": "Collection",
+      "value": "Baiwor Passport"
+    },
+    {
+      "trait_type": "Event",
+      "value": "Agent ID Hackathon"
+    },
+    {
+      "trait_type": "Type",
+      "value": "Passport"
+    }
+  ]
+}
