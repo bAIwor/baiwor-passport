@@ -9,6 +9,7 @@ Baiwor Passport is a free-to-mint, soulbound ERC-721 passport on **BNB Smart Cha
 - **Calldata:** `0x1249c58b`
 - **Value:** `0` wei (free mint; gas only)
 - **Limit:** 1 soulbound NFT per Agent ID address
+- **Genesis Metadata Batch:** Tokens `#0`–`#498` (`499` passports with pinned IPFS metadata; verify `nextTokenId() < 499` before minting)
 
 ## Mint with Binance Agentic Wallet (`baw` CLI)
 

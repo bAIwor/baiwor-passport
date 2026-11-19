@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
   <title>Baiwor Passport (BWP) | Agent ID Soulbound Credential</title>
-  <meta name="description" content="Free soulbound ERC-721 passport on BNB Smart Chain exclusively for .ai Agent ID holders.">
+  <meta name="description" content="Free soulbound ERC-721 passport on BNB Smart Chain exclusively for .ai Agent ID holders. Genesis IPFS metadata batch #0-#498 (499 passports).">
   <link rel="preload" as="image" href="https://gateway.pinata.cloud/ipfs/bafybeidmrga2rupdee274hoiwdvrhqrpcchvjrahynpgnbj3kjgj2sg5pe" fetchpriority="high">
   <link rel="stylesheet" href="./styles.css">
   <script type="module" src="./app.js"></script>
@@ -24,7 +24,7 @@
           <li><a href="#eligibility">Check ID</a></li>
           <li><a href="#agent-cli">Agent CLI</a></li>
           <li><a href="#holders">Holders</a></li>
-          <li><a href="https://bscscan.com/address/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F" target="_blank" rel="noopener noreferrer">BscScan</a></li>
+          <li><a href="https://bscscan.com/address/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F#code" target="_blank" rel="noopener noreferrer">BscScan</a></li>
         </ul>
       </nav>
     </div>
@@ -33,11 +33,11 @@
   <main id="main-content" class="container">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">BNB Smart Chain · Chain ID 56 · Soulbound ERC-721</p>
+        <p class="eyebrow">BNB Smart Chain · Chain ID 56 · Soulbound ERC-721 · Genesis Batch (#0–#498)</p>
         <h1 id="main-title" tabindex="-1">On-Chain Passport for <code>.ai</code> Agent IDs</h1>
         <p class="lead">
           Baiwor Passport (<code>BWP</code>) verifies ownership of a SPACE ID <code>.ai</code> Agent ID on-chain
-          and issues one free, non-transferable soulbound credential per agent wallet.
+          and issues one free, non-transferable soulbound credential per agent wallet. Genesis IPFS metadata batch covers <strong>499 passports (<code>#0–#498</code>)</strong>.
         </p>
 
         <div class="hero-actions">
@@ -89,16 +89,16 @@
         >
         <figcaption>
           <span class="badge">Soulbound</span>
-          <span>1 Free Mint per <code>.ai</code> Agent ID</span>
+          <span>Genesis Batch: 499 Passports (<code>#0–#498</code>)</span>
         </figcaption>
       </figure>
     </section>
 
     <section class="stats-grid" aria-label="Live Contract Metrics">
       <article class="stat-card">
-        <h2>Total Minted</h2>
+        <h2>Genesis Minted</h2>
         <p class="stat-value" id="stat-minted">Loading...</p>
-        <p class="stat-meta">Live <code>nextTokenId()</code> on BSC</p>
+        <p class="stat-meta" id="stat-minted-meta">Genesis metadata batch (#0–#498 · 499 max)</p>
       </article>
       <article class="stat-card">
         <h2>Mint Price</h2>
@@ -113,7 +113,10 @@
       <article class="stat-card">
         <h2>Source Verification</h2>
         <p class="stat-value">Verified</p>
-        <p class="stat-meta"><a href="https://sourcify.dev/server/v2/contract/56/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F?fields=sources" target="_blank" rel="noopener noreferrer">Sourcify Exact Match</a></p>
+        <p class="stat-meta">
+          <a href="https://bscscan.com/address/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F#code" target="_blank" rel="noopener noreferrer">BscScan</a> ·
+          <a href="https://sourcify.dev/server/v2/contract/56/0x0C458D61848Ef7fFD753FbDD1179a7053A60661F?fields=sources" target="_blank" rel="noopener noreferrer">Sourcify</a>
+        </p>
       </article>
     </section>
 
@@ -145,7 +148,7 @@
 
     <section id="agent-cli" class="panel">
       <h2>Mint via AI Agent (<code>baw</code> CLI)</h2>
-      <p>Use Binance Agentic Wallet two-step simulation (<code>preview</code> then <code>execute</code>) with zero blind signing.</p>
+      <p>Use Binance Agentic Wallet two-step simulation (<code>preview</code> then <code>execute</code>) with zero blind signing. Current Genesis IPFS metadata covers tokens <code>#0–#498</code> (499 passports total).</p>
       <div class="copyable">
         <span class="copy">
           <button type="button" class="copy-button" command="--copy" commandfor="baw-cmd" aria-label="Copy Binance Agentic Wallet mint command">

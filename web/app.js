@@ -1,6 +1,7 @@
 const BSC_RPC = 'https://bsc-dataseed.binance.org';
 const CONTRACT = '0x0C458D61848Ef7fFD753FbDD1179a7053A60661F';
 const REGISTRY = '0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F';
+const GENESIS_METADATA_CAP = 499;
 
 const SEL_NEXT_TOKEN_ID = '0x75794a3c';
 const SEL_BALANCE_OF = '0x70a08231';
@@ -89,11 +90,18 @@ const shortAddr = (a) => `${a.slice(0, 6)}...${a.slice(-4)}`;
 
 async function loadStatsAndHolders() {
   const statEl = document.getElementById('stat-minted');
+  const metaEl = document.getElementById('stat-minted-meta');
   const tbody = document.getElementById('holders-tbody');
   try {
     const nextHex = await rpcCall('eth_call', [{ to: CONTRACT, data: SEL_NEXT_TOKEN_ID }, 'latest']);
     const total = Number(BigInt(nextHex));
-    statEl.textContent = String(total);
+    statEl.textContent = `${total} / ${GENESIS_METADATA_CAP}`;
+    if (metaEl) {
+      const remaining = Math.max(0, GENESIS_METADATA_CAP - total);
+      metaEl.textContent = remaining > 0
+        ? `${remaining} metadata slots left (#0–#498)`
+        : 'Genesis IPFS metadata batch full (#0–#498)';
+    }
 
     if (total === 0) {
       tbody.innerHTML = '<tr><td colspan="4">No passports minted yet.</td></tr>';
@@ -142,13 +150,15 @@ async function loadStatsAndHolders() {
 }
 
 async function checkEligibility(addr) {
-  const [agentBalHex, mintedHex] = await Promise.all([
+  const [agentBalHex, mintedHex, nextHex] = await Promise.all([
     rpcCall('eth_call', [{ to: REGISTRY, data: SEL_BALANCE_OF + padAddr(addr) }, 'latest']),
     rpcCall('eth_call', [{ to: CONTRACT, data: SEL_HAS_MINTED + padAddr(addr) }, 'latest']),
+    rpcCall('eth_call', [{ to: CONTRACT, data: SEL_NEXT_TOKEN_ID }, 'latest']),
   ]);
   return {
     hasAgentId: BigInt(agentBalHex) > 0n,
     alreadyMinted: BigInt(mintedHex) > 0n,
+    totalMinted: Number(BigInt(nextHex)),
   };
 }
 
@@ -167,11 +177,13 @@ document.getElementById('check-form').addEventListener('submit', async (event) =
   input.removeAttribute('aria-invalid');
   resultEl.textContent = 'Checking BSC Mainnet...';
   try {
-    const { hasAgentId, alreadyMinted } = await checkEligibility(addr);
+    const { hasAgentId, alreadyMinted, totalMinted } = await checkEligibility(addr);
     if (alreadyMinted) {
       resultEl.textContent = `${shortAddr(addr)}: Eligible (.ai Agent ID found) and ALREADY MINTED a Baiwor Passport.`;
+    } else if (hasAgentId && totalMinted >= GENESIS_METADATA_CAP) {
+      resultEl.textContent = `${shortAddr(addr)}: Holds a .ai Agent ID, but the Genesis IPFS metadata batch (#0–#498) has reached ${GENESIS_METADATA_CAP}/${GENESIS_METADATA_CAP}.`;
     } else if (hasAgentId) {
-      resultEl.textContent = `${shortAddr(addr)}: ELIGIBLE — holds a .ai Agent ID and can mint 1 free Baiwor Passport via your AI agent (baw CLI).`;
+      resultEl.textContent = `${shortAddr(addr)}: ELIGIBLE — holds a .ai Agent ID and can mint 1 free Baiwor Passport (${totalMinted}/${GENESIS_METADATA_CAP} Genesis metadata slots used).`;
     } else {
       resultEl.textContent = `${shortAddr(addr)}: Not eligible — no .ai Agent ID detected on BSC registry.`;
     }
